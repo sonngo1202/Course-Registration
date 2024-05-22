@@ -1,0 +1,137 @@
+openapi: 3.0.3
+info:
+  version: 1.0-SNAPSHOT
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: student
+    description: Student Service
+paths:
+  /student/{id}/progress/:
+    get:
+      tags:
+        - student
+      summary: Lấy thông tin tiến trình học tập của sinh viên
+      operationId: getProgress
+      parameters:
+        - name: id
+          description: Mã sinh viên
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Progress'
+        404:
+          description: Không tìm thấy sinh viên
+          content:
+            application/json:
+              schema:
+                type: string
+              
+  /student/{id}:
+    get:
+      tags:
+        - student
+      summary: Lấy thông tin sinh viên
+      operationId: getDetail
+      parameters:
+        - name: id
+          description: Mã sinh viên
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+        404:
+          description: Không tìm thấy sinh viên
+          content:
+            application/json:
+              schema:
+                type: string
+                
+  /student/all/:
+    get:
+      tags:
+        - student
+      summary: Lấy thông tin tất cả sinh viên
+      operationId: getAll
+      responses:
+        200:
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+   
+components:
+  schemas:
+    ProgressDetail:
+      type: object
+      properties:
+        point:
+          type: number
+          description: Điểm số
+        grade:
+          type: string
+          description: Điểm chữ
+        subjectCode:
+          type: string
+          description: Mã môn học
+        status:
+          type: boolean
+
+    Progress:
+      type: object
+      properties:
+        id:
+          type: integer
+        total_credits:
+          type: integer
+          description: Tổng số tín chỉ tích lũy
+        grade:
+          type: string
+          description: Điểm chữ
+        point:
+          type: number
+          description: Điểm số
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgressDetail'
+          description: Danh sách tiến trình học các học phần
+
+    Student:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Mã sinh viên
+        firstname:
+          type: string
+        lastname:
+          type: string
+        dob:
+          type: string
+          format: date
+          description: Ngày sinh
+        email:
+          type: string
+          format: email
+        phoneNumber:
+          type: string
+        des:
+          type: string

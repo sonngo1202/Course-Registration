@@ -1,0 +1,94 @@
+.select-registration{
+    margin-top: 50px;
+    text-align: left;
+    margin-left: 5%;
+}
+.dropdown {
+    margin-bottom: 10px;
+}
+.dropdown select {
+    padding: 5px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 40%;
+}
+
+table {
+    margin-top: 30px;
+    border-collapse: collapse; 
+    width: 96%; 
+    align-content: center;
+}
+
+th, td {
+    border: 1px solid #ddd; 
+    padding: 8px;
+}
+
+th {
+    background-color: #1069c8;
+    text-align: center;
+    color: white;
+}
+
+td {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0; 
+    margin: 0; 
+}
+
+.show-registration{
+    margin-top: 60px;
+    text-align: left;
+    margin-left: 5%;
+}
+
+.show-registration table{
+    margin-top: 30px;
+    border-collapse: collapse; 
+    width: 80%; 
+    align-content: center;
+}
+
+.action-save{
+    margin-left: 5%;
+    margin-top: 10px;
+    text-align: left;
+}
+
+button{
+    font-size: 14px;
+    padding: 5px;
+}
+button:hover{
+    font-size: 14px;
+    background-color: red;
+    color: white;
+    padding: 5px;
+}
+.action-save button{
+    padding: 7px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 5%;
+}
+
+.action-save button:hover{
+    padding: 7px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #1de251;
+    color: white;
+    cursor: pointer;
+    width: 5%;
+}
+

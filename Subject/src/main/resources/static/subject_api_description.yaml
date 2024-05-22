@@ -1,0 +1,73 @@
+openapi: 3.0.3
+info:
+  version: 1.0-SNAPSHOT
+servers:
+  - url: http://localhost:8081
+tags:
+  - name: subject
+    description: Subject Service
+paths:
+  /subject/{id}:
+    get:
+      tags:
+        - subject
+      summary: Lấy thông tin môn học
+      operationId: getDetail
+      parameters:
+        - name: id
+          description: Mã môn học
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subject'
+        404:
+          description: Không tìm thấy môn học
+          content:
+            application/json:
+              schema:
+                type: string
+                
+  /subject/all/:
+    get:
+      tags:
+        - subject
+      summary: Lấy thông tin tất cả môn học
+      operationId: getAll
+      responses:
+        200:
+          description: Success operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subject'      
+                
+components:
+  schemas:
+   Subject:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+        credits:
+          type: integer
+          format: int32
+        isActive:
+          type: boolean
+        des:
+          type: string
+        prerequisites:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subject'
+            description: Danh sách mã môn tiên quyết
